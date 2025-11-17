@@ -5,77 +5,773 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Report Fasilitas Sekolah</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+
+        /* IMPROVED HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f8f9fa' fill-opacity='1' d='M0,224L120,186.7C240,149,480,75,720,80C960,85,1200,171,1320,213.3L1440,256L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Hero Content Styling */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .hero-btn-primary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .hero-btn-primary:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Image Styling */
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-3 {
+            width: 40px;
+            height: 40px;
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 40px;
+                min-height: 70vh;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+            }
+
+            .hero-image img {
+                max-width: 80%;
+            }
+
+            .floating-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 60px 0 30px;
+                min-height: 60vh;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero-image img {
+                max-width: 70%;
+            }
+        }
+
+        /* Existing Styles (Tetap dipertahankan) */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .feature-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-left: 4px solid var(--primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 2px;
+        }
+
+        .stats-counter {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .stats-border {
+            border-right: 2px solid #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .stats-border {
+                border-right: none;
+                border-bottom: 2px solid #e2e8f0;
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .stats-border:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* Testimonial Section */
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">E-Report Sekolah</a>
-            <div>
-                <a href="reports.html" class="btn btn-light btn-sm">Lihat Laporan</a>
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-2">
+                <i class="fas fa-school text-primary"></i>
+                <span class="fw-bold text-primary">E-Report Sekolah</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Laporan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary-custom btn-sm ms-1 text-light" href="add-report.html">Mulai
+                            Laporkan</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
+    <!-- IMPROVED HERO SECTION -->
+    <section class="hero-section">
+        <!-- Floating Elements -->
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="floating-element floating-3"></div>
 
-    <main class="container py-5">
-
-
-        <h1 class="mb-4 fw-bold text-center">Dashboard E-Report</h1>
-
-
-        <div class="row text-center" id="dashboard-stats">
-            <div class="col-md-3 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h3 id="totalReports">0</h3>
-                        <p>Total Laporan</p>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">
+                        Selamat Datang di <br>
+                        <span class="text-warning">E-Report Sekolah</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Platform pelaporan fasilitas sekolah yang memudahkan siswa, guru, dan staf untuk melaporkan
+                        masalah dengan cepat dan efisien.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="reports.html" class="hero-btn hero-btn-primary">
+                            <i class="fas fa-list me-2"></i>Lihat Laporan
+                        </a>
+                        <a href="add-report.html" class="hero-btn hero-btn-outline">
+                            <i class="fas fa-plus me-2"></i>Buat Laporan Baru
+                        </a>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="col-md-3 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h3 id="newReports">0</h3>
-                        <p>Status: Baru</p>
-                    </div>
+                <div class="col-lg-6 text-center hero-image">
+                    <img src="asset/img/pngwing.com.png" alt="" class="img-fluid">
                 </div>
             </div>
+        </div>
+    </section>
 
-
-            <div class="col-md-3 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h3 id="processReports">0</h3>
-                        <p>Status: Diproses</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h3 id="doneReports">0</h3>
-                        <p>Status: Selesai</p>
+    <!-- STATS SECTION -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="stats-counter">
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-4 mb-md-0 stats-border">
+                            <div class="stat-number" id="totalReports">0</div>
+                            <div class="text-muted">Total Laporan</div>
+                        </div>
+                        <div class="col-md-3 mb-4 mb-md-0 stats-border">
+                            <div class="stat-number text-warning" id="newReports">0</div>
+                            <div class="text-muted">Laporan Baru</div>
+                        </div>
+                        <div class="col-md-3 mb-4 mb-md-0 stats-border">
+                            <div class="stat-number text-info" id="processReports">0</div>
+                            <div class="text-muted">Sedang Diproses</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-number text-success" id="doneReports">0</div>
+                            <div class="text-muted">Telah Selesai</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- FEATURES SECTION -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold">Mengapa Memilih E-Report Sekolah?</h2>
+                <p class="text-muted lead">Solusi Cepat dan Efisien untuk Pelaporan Fasilitas Sekolah</p>
+            </div>
 
-        <div class="text-center mt-4">
-            <a href="add-report.html" class="btn btn-primary">+ Tambah Laporan Baru</a>
-            <a href="reports.html" class="btn btn-outline-secondary">Lihat Semua Laporan</a>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-layer-group text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Sistem Terpadu</h4>
+                        <p class="text-muted mb-0">Semua laporan kerusakan fasilitas sekolah terkumpul dalam satu
+                            platform yang terintegrasi.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Mudah Digunakan</h4>
+                        <p class="text-muted mb-0">Antarmuka sederhana yang bisa diakses dari komputer maupun smartphone
+                            oleh semua pengguna.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Proses Cepat</h4>
+                        <p class="text-muted mb-0">Pelaporan dan penanganan masalah yang cepat dengan sistem notifikasi
+                            dan tracking status.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Data Aman</h4>
+                        <p class="text-muted mb-0">Penyimpanan lokal menjaga keamanan data tanpa bergantung pada server
+                            eksternal.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Statistik Real-time</h4>
+                        <p class="text-muted mb-0">Dashboard menampilkan jumlah laporan dan status terkini secara
+                            real-time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-search text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Pencarian Cerdas</h4>
+                        <p class="text-muted mb-0">Fitur pencarian dan filter untuk menemukan laporan dengan mudah dan
+                            akurat.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold">Apa Kata Pengguna?</h2>
+                <p class="text-muted lead">Testimoni dari komunitas sekolah yang telah menggunakan platform kami</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Dengan E-Report Sekolah, proses pelaporan kerusakan fasilitas menjadi lebih cepat dan
+                            terorganisir. Tim maintenance bisa langsung menindaklanjuti laporan yang masuk."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">AF</div>
+                            <div>
+                                <h6 class="mb-0">Abqory Firdaus</h6>
+                                <small class="text-muted">Siswa SMK software Developer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Sebagai siswa, saya sangat terbantu dengan sistem ini. Sekarang saya bisa langsung
+                            melaporkan kerusakan fasilitas tanpa harus melalui prosedur yang rumit."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">RM</div>
+                            <div>
+                                <h6 class="mb-0">Rayyan Mandisa</h6>
+                                <small class="text-muted">Siswa SMK software Developer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Sistem yang sangat user-friendly! Saya sebagai siswa bisa dengan mudah melaporkan kerusakan
+                            kursi atau meja di kelas hanya dengan beberapa klik."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">DN</div>
+                            <div>
+                                <h6 class="mb-0">Dzaky Nazran</h6>
+                                <small class="text-muted">Siswa SMK software Developer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="py-5 bg-light">
+        <div class="container d-flex justify-content-center align-items-center flex-column gap-4">
+            <div class="col-lg-6">
+                <h2 class="section-title fw-bold text-center">Mau memulai laporan atau pelajari lebih lanjut?</h2>
+                <p class="text-muted lead text-center"> tekan tombol di bawah untuk memulai nya!</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap m-4">
+                    <a href="about.html" class="btn btn-primary-custom text-light">Pelajari Lebih Lanjut</a>
+                    <a href="add-report.html" class="btn btn-outline-custom">Buat Laporan Pertama</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>E-Report Sekolah</h5>
+                    <p class="text-light mb-4">
+                        Platform pelaporan fasilitas sekolah terintegrasi untuk menciptakan lingkungan belajar yang
+                        lebih baik.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Menu</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="reports.html">Laporan</a></li>
+                        <li><a href="services.html">Layanan</a></li>
+                        <li><a href="about.html">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Layanan</h5>
+                    <ul class="footer-links">
+                        <li><a href="add-report.html">Buat Laporan</a></li>
+                        <li><a href="reports.html">Lihat Laporan</a></li>
+                        <li><a href="dashboard.html">Statistik</a></li>
+                        <li><a href="faq.html">Pertanyaan Umum</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Kontak</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Bogor, Indonesia</li>
+                        <li><i class="fas fa-phone me-2"></i> +62 812-8813-6043</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@ereportsekolah.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                                <p class="mb-0">&copy; 2025 <a href="https://github.com/dzakyalvian" style="text-decoration: none;">dzakyalvian</a> E-Report Sekolah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layanan | E-Report Sekolah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0 60px;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 2px;
+        }
+
+        .service-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-2">
+                <i class="fas fa-school text-primary"></i>
+                <span class="fw-bold text-primary">E-Report Sekolah</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Laporan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary-custom btn-sm ms-1 text-light" href="add-report.html">Mulai
+                            Laporkan</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="fw-bold display-4 mb-3">Layanan <span class="text-warning">E-Report Sekolah</span></h1>
+                    <p class="lead mb-0">Solusi lengkap untuk manajemen pelaporan fasilitas sekolah</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <nav aria-label="breadcrumb">
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES CONTENT -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title fw-bold">Layanan Utama Kami</h2>
+                    <p class="text-muted">Platform E-Report Sekolah menyediakan berbagai layanan untuk memudahkan proses
+                        pelaporan dan penanganan masalah fasilitas sekolah.</p>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plus-circle text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Buat Laporan</h4>
+                        <p class="text-muted mb-0">Fitur untuk membuat laporan kerusakan fasilitas dengan mudah dan
+                            cepat. Lengkapi dengan deskripsi dan foto untuk penanganan yang lebih tepat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-list text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Kelola Laporan</h4>
+                        <p class="text-muted mb-0">Sistem manajemen laporan yang terorganisir dengan filter dan
+                            pencarian untuk memudahkan tracking status laporan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Dashboard Statistik</h4>
+                        <p class="text-muted mb-0">Visualisasi data laporan dalam bentuk grafik dan statistik untuk
+                            analisis dan pengambilan keputusan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bell text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Notifikasi Status</h4>
+                        <p class="text-muted mb-0">Sistem notifikasi yang menginformasikan perubahan status laporan
+                            secara real-time kepada pengguna.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Pencarian Cerdas</h4>
+                        <p class="text-muted mb-0">Fitur pencarian dan filter canggih untuk menemukan laporan
+                            berdasarkan berbagai kriteria dengan mudah.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt text-white fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Keamanan Data</h4>
+                        <p class="text-muted mb-0">Sistem penyimpanan data yang aman dengan enkripsi untuk melindungi
+                            informasi sensitif sekolah.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title fw-bold text-center">Cara Kerja Sistem</h2>
+                    <p class="text-muted text-center">Proses sederhana untuk melaporkan dan menangani masalah fasilitas
+                        sekolah</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mx-auto mb-3"
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white fw-bold" style="font-size: 1.5rem;">1</span>
+                        </div>
+                        <h4 class="fw-bold mb-3">Buat Laporan</h4>
+                        <p class="text-muted">Pengguna membuat laporan kerusakan fasilitas melalui form yang mudah
+                            diisi.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mx-auto mb-3"
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white fw-bold" style="font-size: 1.5rem;">2</span>
+                        </div>
+                        <h4 class="fw-bold mb-3">Verifikasi</h4>
+                        <p class="text-muted">Tim verifikasi memeriksa dan mengonfirmasi laporan yang masuk.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mx-auto mb-3"
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white fw-bold" style="font-size: 1.5rem;">3</span>
+                        </div>
+                        <h4 class="fw-bold mb-3">Penanganan</h4>
+                        <p class="text-muted">Tim maintenance menangani masalah sesuai dengan prioritas dan
+                            ketersediaan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mx-auto mb-3"
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white fw-bold" style="font-size: 1.5rem;">4</span>
+                        </div>
+                        <h4 class="fw-bold mb-3">Selesai</h4>
+                        <p class="text-muted">Status laporan diperbarui menjadi selesai setelah masalah ditangani.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-3">Siap Meningkatkan Kualitas Fasilitas Sekolah?</h2>
+                    <p class="mb-0">Bergabunglah dengan ratusan sekolah yang telah menggunakan E-Report Sekolah untuk
+                        manajemen fasilitas yang lebih baik.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="add-report.html" class="btn btn-light btn-lg px-4 fw-bold">Mulai Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>E-Report Sekolah</h5>
+                    <p class="text-light mb-4">
+                        Platform pelaporan fasilitas sekolah terintegrasi untuk menciptakan lingkungan belajar yang
+                        lebih baik.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Menu</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="reports.html">Laporan</a></li>
+                        <li><a href="services.html">Layanan</a></li>
+                        <li><a href="about.html">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Layanan</h5>
+                    <ul class="footer-links">
+                        <li><a href="add-report.html">Buat Laporan</a></li>
+                        <li><a href="reports.html">Lihat Laporan</a></li>
+                        <li><a href="dashboard.html">Statistik</a></li>
+                        <li><a href="faq.html">Pertanyaan Umum</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Kontak</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Bogor, Indonesia</li>
+                        <li><i class="fas fa-phone me-2"></i> +62 812-8813-6043</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@ereportsekolah.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2025 <a href="https://github.com/dzakyalvian"
+                        style="text-decoration: none;">dzakyalvian</a> E-Report Sekolah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
